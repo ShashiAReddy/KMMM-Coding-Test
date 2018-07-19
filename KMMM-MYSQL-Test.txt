@@ -7,6 +7,6 @@ ALTER TABLE `course` ADD INDEX `Tid_idx` (`TID` ASC);
 ALTER TABLE `course` ADD CONSTRAINT `Tid`FOREIGN KEY (`TID`)REFERENCES `teacher` (`TID`)ON DELETE NO ACTION ON UPDATE NO ACTION;ALTER TABLE `registration` ADD INDEX `Sid_idx` (`SID` ASC),ADD INDEX `Cid_idx` (`CID` ASC);
 ALTER TABLE `registration` ADD CONSTRAINT `Sid`FOREIGN KEY (`SID`)REFERENCES `student` (`SID`)ON DELETE NO ACTION ON UPDATE NO ACTION,ADD CONSTRAINT `Cid`FOREIGN KEY (`CID`)REFERENCES `course` (`CID`)ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-select * from registration;
 
-select a.CID, CNAME from registration a inner join Course b on a.CID=b.CID group by a.CID,CNAME having count(SID)>=2
+
+select R.CID, R.CNAME from registration R inner join Course C on R.CID=C.CID group by R.CID,CNAME having count(SID)>=2
